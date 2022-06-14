@@ -1,0 +1,24 @@
+<form [formGroup]="cadastroCursoForm" class="mt-4" (submit)="salvaCurso()">
+
+    <div class="form-group">
+        <label for="titulo">Título</label>
+        <input formControlName="titulo" class="form-control" id="titulo">
+        <small *ngIf="cadastroCursoForm.get('titulo')?.errors?.['required']" class="text-danger d-block mt-2">Título é obrigatório!</small> 
+    </div>
+
+    <div class="form-group">
+        <label for="instrutor">Instrutor</label>
+        <input formControlName="instrutor" class="form-control" id="instrutor">
+        <small *ngIf="cadastroCursoForm.get('instrutor')?.errors?.['required']" class="text-danger d-block mt-2">Instrutor é obrigatório!</small> 
+    </div>
+
+    <div class="form-group">
+        <label for="cargaHoraria">Carga horária</label>
+        <input formControlName="cargaHoraria" class="form-control" id="cargaHoraria" type="number">
+        <small *ngIf="cadastroCursoForm.get('cargaHoraria')?.errors?.['required']" class="text-danger d-block mt-2">Carga Horária é obrigatória!</small> 
+        <small *ngIf="cadastroCursoForm.get('cargaHoraria')?.errors?.['min']" class="text-danger d-block mt-2">Carga horária deve ser maior que 2h!</small> 
+        <small *ngIf="cadastroCursoForm.get('cargaHoraria')?.errors?.['max']" class="text-danger d-block mt-2">Carga horária deve ser menor que 30h!</small> 
+    </div>
+
+    <button [disabled]="cadastroCursoForm.invalid" type="submit" class="btn btn-primary">Cadastrar</button>
+</form>
